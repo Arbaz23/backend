@@ -667,6 +667,17 @@ describe("Endpoints Test", () => {
 				userDocument = await findUserByEmailService(newUser.email);
 			});
 		});
+
+		describe("GET /api/users/marketing-emails/unsubscribe", () => {
+			it("should not update if user is not found, i.e. invalid ID", async () => {
+				const res = await supertest(app)
+					.get(`/users/marketing-emails/unsubscribe/${"6339cebe708e3a1198f1997b"}`)
+					.set('Accept', 'application/json')
+					.set('Authorization', `Bearer ${adminUser.access_token}`);
+
+				expect(res.body.receiveMarketingEmails).toEqual(false);
+			});
+		});
 	});
 
 	describe("/admin", () => {

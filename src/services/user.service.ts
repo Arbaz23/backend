@@ -104,7 +104,7 @@ export function updateUserByIdService(id: string, payload: UpdateQuery<User>) {
 }
 
 export function unbscribeUserByIdService(id: string) {
-	return UserModel.findByIdAndUpdate(id, {receiveMarketingEmails : false},{new:true});
+	return UserModel.findByIdAndUpdate(id, { receiveMarketingEmails: false }, { new: true });
 }
 
 /**
